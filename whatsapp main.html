@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartiore Luxe - Group Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CORE SETUP */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505; /* Deep rich black background for the body */
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            min-height: 100vh;
+            padding: 40px 0;
+            place-items: center;
+        }
+
+        /* SLIDE CONTAINER */
+        .slide-container {
+            align-items: flex-start;
+            /* Subtle luxury radial gradient: Gold-tinted dark grey fading to pure black */
+            background: radial-gradient(circle at 100% 0%, #1c1810 0%, #111111 40%, #0a0a0a 100%);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid #2a2a2a;
+            display: flex;
+            flex-direction: column;
+            height: 900px;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+        }
+
+        .slide-container#slide1, 
+        .slide-container#slide10 {
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* TYPOGRAPHY */
+        .matric-tag {
+            color: #b8972e;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #f5f5f5;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .content-area {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        p {
+            font-family: 'Montserrat', sans-serif;
+            color: #cccccc;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* SLIDE 1 & 10 (TITLE & Q&A) */
+        .title-layout {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37; /* Luxury Gold */
+            font-size: 90px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .sub-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #888;
+            font-size: 20px;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        .qa-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* LIST STYLES */
+        .styled-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .styled-list li {
+            margin-bottom: 25px;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.6;
+            font-size: 18px;
+            color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .styled-list li::before {
+            content: '\25C6'; /* Elegant diamond bullet */
+            color: #d4af37;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 14px;
+        }
+
+        .styled-list li strong {
+            color: #d4af37;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+            align-items: start;
+        }
+
+        .two-column.align-center {
+            align-items: center;
+        }
+
+        .two-column .image-wrapper {
+            height: 450px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.4); /* Gold subtle border */
+        }
+
+        .two-column .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BLEED IMAGE LAYOUT */
+        .slide-container.bleed-image-layout {
+            align-items: start;
+            display: grid;
+            gap: 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+        }
+
+        .slide-container.bleed-image-layout > .content-container {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-start;
+            box-sizing: border-box;
+        }
+
+        .slide-container.bleed-image-layout > .image-container {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            display: block;
+            height: 720px;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+
+        .bleed-text-side h3 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .bleed-text-side h3:first-child {
+            margin-top: 0;
+        }
+
+        .bleed-text-side p {
+            margin-bottom: 20px;
+        }
+
+        /* TILED TEXT & IMAGES */
+        .tiled-content {
+            align-items: stretch;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .tile {
+            background-color: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .tile .icon {
+            color: #d4af37;
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .tile h3 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .two-column.tiled > div {
+            background-color: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            padding: 45px 40px;
+        }
+
+        .image-tile {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .image-tile .image-wrapper {
+            height: 250px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .image-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-tile h3 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* HIGHLIGHTED NUMBERS */
+        .highlight-numbers-layout {
+            align-items: center;
+        }
+
+        .highlight-numbers-layout > div:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 2px solid rgba(212, 175, 55, 0.3);
+            padding-right: 50px;
+        }
+
+        .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 150px;
+            font-weight: 700;
+            line-height: 1;
+            color: #d4af37;
+        }
+
+        .number-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+        }
+
+        .highlight-numbers-layout > div:last-child {
+            padding-left: 20px;
+        }
+
+        .highlight-numbers-layout h3 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-numbers-layout p {
+            margin-bottom: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title_Slide -->
+    <div class="slide-container" id="slide1">
+        <div class="title-layout">
+            <h1 class="main-title">Cartiore Luxe</h1>
+            <h2 class="sub-title">How a Website Promotes a Luxury Business</h2>
+            <p class="subtitle-text">Information Technology Group Presentation</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Bleed_Image_Right (Intro) -->
+    <div class="slide-container bleed-image-layout" id="slide2">
+        <div class="content-container">
+            <p class="matric-tag">Presenters: 20251911 & 20251827</p>
+            <h2 class="slide-title">Information Technology & Websites</h2>
+            <div class="content-area">
+                <div class="bleed-text-side">
+                    <h3>Defining the Digital Core</h3>
+                    <p>Information Technology (IT) forms the operational backbone of modern commerce, enabling data processing, communication, and robust digital infrastructure.</p>
+                    
+                    <h3>The Business Website</h3>
+                    <p>A website acts as a sophisticated, 24/7 global storefront. It establishes unwavering credibility, provides instant access to collections, and serves as the primary hub for digital marketing operations.</p>
+                    
+                    <h3>Case Study: Cartiore Luxe</h3>
+                    <p>For Cartiore Luxe, the website is an immersive digital boutique. We are leveraging high-end web technologies to elevate the luxury fashion experience, seamlessly connecting premium garments with an elite global clientele.</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1000" alt="Luxury fashion model in architectural setting">
+        </div>
+    </div>
+
+    <!-- Slide 3: Image_Right_Text_Left (Brand Visibility) -->
+    <div class="slide-container" id="slide3">
+        <p class="matric-tag">Presenters: 20251828 & 20251829</p>
+        <h2 class="slide-title">Brand Visibility & Online Presence</h2>
+        <div class="content-area">
+            <div class="two-column align-center">
+                <div>
+                    <ul class="styled-list">
+                        <li><strong>Global Reach</strong>Unlike a physical boutique limited by geography, a website makes Cartiore Luxe accessible to high-net-worth clients worldwide, around the clock.</li>
+                        <li><strong>Search Engine Dominance</strong>Implementing SEO (Search Engine Optimization) ensures that when clients search for premium luxury wear on Google, Cartiore Luxe ranks decisively at the top.</li>
+                        <li><strong>Digital Branding</strong>A bespoke website allows us to control the narrative. We project exclusivity and sophistication through meticulously chosen aesthetics and refined copywriting.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Abstract digital glowing globe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Tiled_Text_With_Icons (Product Showcase) -->
+    <div class="slide-container" id="slide4">
+        <p class="matric-tag">Presenters: 20251830 & 20251831</p>
+        <h2 class="slide-title">Product Showcase & Fashion Catalog</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Luxury Presentation</h3>
+                    <p>The website employs minimalist, high-contrast design. By using negative space and elegant typography, the clothing takes center stage, mimicking the serene environment of a physical luxury boutique.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-camera-retro"></i></div>
+                    <h3>Immersive Visuals</h3>
+                    <p>Products are displayed using ultra-high-resolution photography. This allows clients to inspect the meticulous stitching, premium fabrics, and intricate cuts of every Cartiore Luxe piece.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Curated Galleries</h3>
+                    <p>The catalog is intelligently organized into exclusive collections, seasonal drops, and limited editions. Intuitive filtering systems guide the customer journey, making product discovery effortless.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Image_Left_Text_Right (E-Commerce) -->
+    <div class="slide-container" id="slide5">
+        <p class="matric-tag">Presenters: 20251832 & 20251833</p>
+        <h2 class="slide-title">E-Commerce & Online Shopping</h2>
+        <div class="content-area">
+            <div class="two-column align-center">
+                <div>
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1000" alt="Elegant mobile phone displaying a shopping concept">
+                    </div>
+                </div>
+                <div>
+                    <ul class="styled-list">
+                        <li><strong>Frictionless Ordering</strong>Cartiore Luxe utilizes an optimized, step-by-step checkout process. Customers can select sizes, view real-time availability, and place orders without technical hurdles.</li>
+                        <li><strong>Digital Concierge</strong>The sophisticated cart system remembers client preferences, suggests matching accessories, and gracefully handles complex bespoke tailoring requests.</li>
+                        <li><strong>Unmatched Convenience</strong>We bring the exclusive Cartiore Luxe fitting room and point-of-sale directly to the client's smartphone, enabling luxury shopping from anywhere in the world.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Highlighted_Numbers (Digital Payments) -->
+    <div class="slide-container" id="slide6">
+        <p class="matric-tag">Presenters: 20251835 & 20251836</p>
+        <h2 class="slide-title">Digital Payments & Transactions</h2>
+        <div class="content-area">
+            <div class="two-column highlight-numbers-layout">
+                <div>
+                    <div class="number">100<span style="font-size: 80px;">%</span></div>
+                    <div class="number-label">Secure Checkouts</div>
+                </div>
+                <div>
+                    <h3>Seamless Financial Gateways</h3>
+                    <p>For high-ticket luxury purchases, trust is paramount. Cartiore Luxe integrates enterprise-grade payment gateways featuring end-to-end SSL encryption to protect sensitive client financial data.</p>
+                    <p><strong>Payment Flexibility:</strong> The platform seamlessly supports diverse transaction methods including premium credit cards, secure bank transfers, and international digital wallets, catering to an elite global clientele.</p>
+                    <p><strong>Instant Confirmations:</strong> Automated, real-time transaction processing guarantees fast order approvals, generating instant digital receipts and reducing post-purchase anxiety for the buyer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Two_Column_Tiled_Text (Customer Communication) -->
+    <div class="slide-container" id="slide7">
+        <p class="matric-tag">Presenters: 20251837 & 20251839</p>
+        <h2 class="slide-title">Customer Communication & Engagement</h2>
+        <div class="content-area">
+            <div class="two-column tiled">
+                <div>
+                    <i class="fa-solid fa-headset" style="font-size: 45px; color: #d4af37; margin-bottom: 25px;"></i>
+                    <h3 style="color: #d4af37; font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 15px;">Direct Client Channels</h3>
+                    <p>Cartiore Luxe replaces generic support with a VIP client advisory model. Integrated contact forms, secure messaging, and live chat connect clients directly with professional fashion consultants.</p>
+                    <p>This immediate access allows for bespoke sizing advice, meticulous styling recommendations, and priority handling of special requests.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-handshake-angle" style="font-size: 45px; color: #d4af37; margin-bottom: 25px;"></i>
+                    <h3 style="color: #d4af37; font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 15px;">Relationship Building</h3>
+                    <p>The website acts as a powerful feedback hub. By analyzing customer inquiries and reviews, we gain critical insights into shifting fashion trends and overall client satisfaction.</p>
+                    <p>Automated post-purchase follow-ups and highly personalized email campaigns foster long-term loyalty, turning single-time buyers into lifelong brand ambassadors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Tiled_Images (Social Media Integration) -->
+    <div class="slide-container" id="slide8">
+        <p class="matric-tag">Presenters: 20251840 & 20251841</p>
+        <h2 class="slide-title">Social Media Integration & Marketing</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="image-tile">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=1000" alt="High-end fashion photography, editorial style">
+                    </div>
+                    <h3>Visual Storytelling</h3>
+                    <p>Connecting the website with Instagram and Facebook allows Cartiore Luxe to showcase editorial lifestyle content, building an aspirational brand image that captivates followers.</p>
+                </div>
+                <div class="image-tile">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" alt="Digital marketing data concept">
+                    </div>
+                    <h3>Targeted Campaigns</h3>
+                    <p>Using integrated analytics pixels, we track visitor behavior to deploy highly targeted social media ads, ensuring our luxury pieces are presented directly to the ideal demographic.</p>
+                </div>
+                <div class="image-tile">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1000" alt="Luxury e-commerce interface">
+                    </div>
+                    <h3>Traffic Conversion</h3>
+                    <p>'Shoppable posts' create a seamless bridge between social media platforms and our website, turning digital admiration directly into tangible sales traffic and revenue.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Bleed_Image_Right (Conclusion) -->
+    <div class="slide-container bleed-image-layout" id="slide9">
+        <div class="content-container">
+            <p class="matric-tag">Presenter: 20251911</p>
+            <h2 class="slide-title">Conclusion & Innovations</h2>
+            <div class="content-area">
+                <div class="bleed-text-side">
+                    <h3>The Digital Cornerstone</h3>
+                    <p>For Cartiore Luxe, a website is far more than a digital brochure—it is the central engine of the business. It integrates marketing, sales, and bespoke customer relations into a single, cohesive luxury experience.</p>
+                    
+                    <h3>Looking Ahead</h3>
+                    <p>The future of the fashion business lies in hyper-personalization. Future improvements for Cartiore Luxe will include AI-driven personal styling algorithms and Augmented Reality (AR) virtual try-on features to blur the line between physical and digital retail.</p>
+                    
+                    <h3>Appreciation</h3>
+                    <p>Thank you for exploring the critical intersection of Information Technology and high fashion with us. Technology is the catalyst that truly empowers the Cartiore Luxe vision.</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1000" alt="Futuristic luxury retail concept">
+        </div>
+    </div>
+
+    <!-- Slide 10: Q&A -->
+    <div class="slide-container" id="slide10">
+        <div class="qa-layout">
+            <h2 style="color: #d4af37; font-family: 'Playfair Display', serif; font-size: 110px; margin-bottom: 20px;">Questions?</h2>
+            <p style="font-size: 30px; color: #e0e0e0; font-family: 'Playfair Display', serif;">Thank you for your time and attention.</p>
+            <div style="margin-top: 60px; text-align: center;">
+                <p style="color: #888; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Cartiore Luxe Digital Strategy Team</p>
+                <p style="color: #555; margin-top: 10px;">Information Technology & Business Development</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
